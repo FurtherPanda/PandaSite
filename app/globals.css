@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Colores del manual de marca */
+  --color-panda-primary: #8B5CF6;
+  --color-panda-ink: #0B0B0F;
+  --color-panda-paper: #FAFAFC;
+  --color-panda-slate: #1F1F28;
+  --color-panda-muted: #6B7280;
+  --color-panda-accent-light: #EDE9FE;
+
+  /* Tipografías de la marca */
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-heading: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+
+/* PANDA — intermittent grid energy */
+
+.grid-energy-line {
+  stroke: #8B5CF6;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 90 1800;
+  stroke-dashoffset: 0;
+  opacity: 0;
+  filter:
+    drop-shadow(0 0 2px #8B5CF6)
+    drop-shadow(0 0 5px #8B5CF680);
+  animation: grid-energy-travel 24s ease-in-out infinite;
+  will-change: stroke-dashoffset, opacity;
+}
+
+.grid-energy-horizontal {
+  animation-name: grid-energy-travel;
+}
+
+.grid-energy-vertical {
+  animation-name: grid-energy-travel-vertical;
+}
+
+.grid-energy-a { animation-delay: 1s; }
+.grid-energy-b { animation-delay: 8s; }
+.grid-energy-c { animation-delay: 14s; }
+.grid-energy-d { animation-delay: 5s; }
+.grid-energy-e { animation-delay: 17s; }
+
+.grid-energy-f { animation-delay: 11s; }
+.grid-energy-g { animation-delay: 3s; }
+.grid-energy-h { animation-delay: 16s; }
+.grid-energy-i { animation-delay: 7s; }
+
+
+@keyframes grid-energy-travel {
+  0%, 5% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+
+  7% {
+    opacity: 0.8;
+  }
+
+  13% {
+    stroke-dashoffset: -4000px;
+    opacity: 0.5;
+  }
+
+  17%, 100% {
+    stroke-dashoffset: -4000px;
+    opacity: 0;
+  }
+}
+
+@keyframes grid-energy-travel-vertical {
+  0%, 5% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+
+  7% {
+    opacity: 0.8;
+  }
+
+  13% {
+    stroke-dashoffset: -2000px;
+    opacity: 0.5;
+  }
+
+  17%, 100% {
+    stroke-dashoffset: -2000px;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid-energy-line {
+    animation: none;
+    opacity: 0;
+  }
+}
